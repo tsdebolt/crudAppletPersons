@@ -104,11 +104,19 @@
 				type="submit" name="login">Login</button></td>
 			<td><p style="color: red;"><?php echo $errMsg; ?></p></td>
             </tr>	
-
+            
+            
 			</form>
-
+			
+            <form action="https://github.com/tsdebolt/crudAppletPersons">
+                <tr>
+                    <td><button class="btn btn-lg btn-primary btn-block" 
+                    name="getCode">GitHub Code</button></td>
+                    <td>
+                </tr>	
+            </form>
 		</div> 
-
+        
 	</body>
 	
 </html>
