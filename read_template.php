@@ -4,6 +4,16 @@ if (!isset($_SESSION['email'])) {
 header("Location: login.php");
 }
 
+// include database and object files
+include_once '../databaseA16/database.php';
+include_once 'objects/person.php';
+// get database connection
+$pdo = Database::connect();
+//Session user
+$temp = new Person($pdo);
+$temp->getID();
+$temp->readOne();
+
 error_reporting(0);
 // search form
 echo "<form role='search' action='search.php'>";
@@ -18,12 +28,13 @@ echo "</form>";
   
 // add a person button
 
+if (strcmp($temp->role, "Admin") == 0){
 echo "<div class='right-button-margin'>";
     echo "<a href='register.php' class='btn btn-primary pull-right'>";
         echo "<span class='glyphicon glyphicon-plus'></span> Register a person";
     echo "</a>";
 echo "</div>";
-
+}
   
 // display the person if there are any
 if($total_rows>0){
